@@ -3,7 +3,7 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tags.new(tag_params)
-    if @tag.save?
+    if @tag.save
       render :json => @tag.to_json
     else
       render :json => @tag.error.to_json
@@ -18,7 +18,7 @@ class TagsController < ApplicationController
 
   private
   def tag_params
-    @tag.permit(:name)
+    params.permit(:name)
   end
 
 end
